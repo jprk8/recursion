@@ -9,8 +9,8 @@ function fibs(n) {
 
 function fibsRec(n, arr = [0, 1]) {
     console.log("This was printed recursively");
-    if (n === 1) {
-        return 0;
+    if (n <= 1) {
+        return [0];
     } else if (n === 2) {
         return arr;
     }
