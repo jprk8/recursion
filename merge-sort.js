@@ -3,18 +3,13 @@
 // Sort the right half
 // Merge the sorted halves
 
-function mergeSort(arr, sorted = []) {
+function mergeSort(arr) {
   if (arr.length > 1) {
     const mid = Math.floor(arr.length / 2);
     const left = arr.slice(0, mid);
     const right = arr.slice(mid);
-    // sort the halves
-    const sortedLeft = mergeSort(left, sorted);
-    const sortedRight = mergeSort(right, sorted);
-    // merge the halves and store the array
-    return (sorted = merge(sortedLeft, sortedRight));
+    return merge(mergeSort(left), mergeSort(right));
   } else {
-    // return the "sorted" single element array to begin merging
     return arr;
   }
 }
@@ -34,12 +29,15 @@ function merge(a, b) {
 
   if (i < a.length) {
     return arr.concat(a.slice(i));
-  } else if (j < b.length) {
+  } else {
     return arr.concat(b.slice(j));
   }
+
 }
 
 const test1 = [3, 2, 1, 13, 8, 5, 0, 1];
 const test2 = [105, 79, 100, 110];
+const test3 = [2, 4, 1, 3, 5];
 console.log(mergeSort(test1));
 console.log(mergeSort(test2));
+console.log(mergeSort(test3));
